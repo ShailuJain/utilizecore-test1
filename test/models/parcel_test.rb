@@ -1,7 +1,7 @@
 require "test_helper"
 
 class ParcelTest < ActiveSupport::TestCase
-  def setup
+  setup do
     @parcel = Parcel.new(weight: 100, cost: 200, sender_id: users(:one).id,
                          receiver_id: users(:two).id, status: "Sent", payment_mode: "COD", service_type_id: service_types(:one).id)
   end
@@ -29,6 +29,12 @@ class ParcelTest < ActiveSupport::TestCase
     @parcel.cost = nil
     assert_not @parcel.valid?
     @parcel.cost = "adddw"
+    assert_not @parcel.valid?
+  end
+
+  test "sender & receiver should not be same" do
+    @parcel.sender_id = users(:one).id
+    @parcel.receiver_id = users(:one).id
     assert_not @parcel.valid?
   end
 end

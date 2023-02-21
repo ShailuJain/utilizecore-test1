@@ -7,6 +7,7 @@ class Parcel < ApplicationRecord
 	validates :weight, :cost, :numericality => { :greater_than => 0 }
 	validates :status, inclusion: STATUS
 	validates :payment_mode, inclusion: PAYMENT_MODE
+	validates :sender_id, uniqueness: {scope: :receiver_id}
 
 	belongs_to :service_type
 	belongs_to :sender, class_name: 'User'

@@ -7,7 +7,7 @@ one:
   state: MyString
   country: MyString
   pincode: MyString
-  mobile_number: MyString
+  mobile_number: 9999999999
   user: one
 
 two:
@@ -17,5 +17,5 @@ two:
   state: MyString
   country: MyString
   pincode: MyString
-  mobile_number: MyString
+  mobile_number: 9999999998
   user: two
