@@ -3,7 +3,7 @@ class ParcelsController < ApplicationController
 
   # GET /parcels or /parcels.json
   def index
-    @parcels = Parcel.all
+    @parcels = Parcel.includes(:sender, :receiver, :service_type)
   end
 
   # GET /parcels/1 or /parcels/1.json
