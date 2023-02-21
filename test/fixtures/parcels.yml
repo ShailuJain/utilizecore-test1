@@ -3,15 +3,17 @@
 one:
   weight: 100
   status: Sent
-  service_type_id: 1
-  sender_id: 1
-  receiver_id: 1
+  payment_mode: COD
+  service_type: one
+  sender: one
+  receiver: one
   cost: 200
 
 two:
   weight: 100
   status: Sent
-  service_type_id: 1
-  sender_id: 1
-  receiver_id: 1
+  payment_mode: Prepaid
+  service_type: one
+  sender: one
+  receiver: one
   cost: 200

@@ -49,7 +49,11 @@ class ParcelsController < ApplicationController
         format.html { redirect_to @parcel, notice: 'Parcel was successfully updated.' }
         format.json { render :show, status: :ok, location: @parcel }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html do
+          @users = User.all.map{|user| [user.name_with_address, user.id]}
+          @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
+          render :edit, status: :unprocessable_entity
+        end
         format.json { render json: @parcel.errors, status: :unprocessable_entity }
       end
     end
