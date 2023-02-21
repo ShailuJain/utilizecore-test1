@@ -17,7 +17,8 @@ class ParcelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create parcel" do
     assert_difference('Parcel.count') do
-      post parcels_url, params: { parcel: { payment_id: @parcel.payment_id, receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_id: @parcel.service_id, status: @parcel.status, weight: @parcel.weight } }
+      post parcels_url, params: { parcel: { receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_type_id: @parcel.service_type_id,
+                                            status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost, payment_mode: @parcel.payment_mode } }
     end
 
     assert_redirected_to parcel_url(Parcel.last)
@@ -34,7 +35,14 @@ class ParcelsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update parcel" do
-    patch parcel_url(@parcel), params: { parcel: { payment_id: @parcel.payment_id, receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_id: @parcel.service_id, status: @parcel.status, weight: @parcel.weight } }
+    patch parcel_url(@parcel), params: { parcel: { receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_type_id: @parcel.service_type_id,
+                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost, payment_mode: @parcel.payment_mode } }
+    assert_redirected_to parcel_url(@parcel)
+  end
+
+  test "should have errors on update parcel if invalid params" do
+    patch parcel_url(@parcel), params: { parcel: { receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_type_id: @parcel.service_type_id,
+                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost, payment_mode: @parcel.payment_mode} }
     assert_redirected_to parcel_url(@parcel)
   end
 

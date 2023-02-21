@@ -7,8 +7,8 @@ one:
   state: MyString
   country: MyString
   pincode: MyString
-  mobile_number: MyString
-  user_id: 
+  mobile_number: 9999999999
+  user: one
 
 two:
   address_line_one: MyString
@@ -17,5 +17,5 @@ two:
   state: MyString
   country: MyString
   pincode: MyString
-  mobile_number: MyString
-  user_id: 
+  mobile_number: 9999999998
+  user: two
