@@ -31,7 +31,7 @@ Things you may want to cover:
 5. while creating parcel sender and receiver cannot be the same, backend validation (Solved + Added test cases)
 6. Mobile Number validation (Solved + Added test cases)
 7. Email validation (Solved + Added test cases)
-8. Cant update users
+8. Cant update users (Solved)
 9. User destroy feature should be implemented as one of the below
    1. Should not be able to destroy user if any parcel exists for this user 
    2. implement is_deactivated for user table

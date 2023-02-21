@@ -13,7 +13,7 @@ class ParcelsController < ApplicationController
   # GET /parcels/new
   def new
     @parcel = Parcel.new
-    @users = User.all.map{|user| [user.name_with_address, user.id]}
+    @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
     @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
   end
 
@@ -33,7 +33,7 @@ class ParcelsController < ApplicationController
         format.json { render :show, status: :created, location: @parcel }
       else
         format.html do
-          @users = User.all.map{|user| [user.name_with_address, user.id]}
+          @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
           @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]} 
           render :new, status: :unprocessable_entity
         end
@@ -50,7 +50,7 @@ class ParcelsController < ApplicationController
         format.json { render :show, status: :ok, location: @parcel }
       else
         format.html do
-          @users = User.all.map{|user| [user.name_with_address, user.id]}
+          @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
           @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
           render :edit, status: :unprocessable_entity
         end

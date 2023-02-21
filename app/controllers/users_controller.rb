@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
+  before_action :set_user, only: %i[ show edit update destroy deactivate ]
 
   # GET /users or /users.json
   def index
@@ -48,6 +48,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def deactivate
+    @user.is_deactivated = true
+    @user.save!
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'User was successfully deactivated.' }
+      format.json { head :no_content }
+    end
+  end
+
   # DELETE /users/1 or /users/1.json
   def destroy
     @user.destroy
@@ -65,7 +74,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, address_attributes: [:address_line_one, :address_line_two,
+      params.require(:user).permit(:name, :email, address_attributes: [:id, :address_line_one, :address_line_two,
                                                                        :city, :state, :country,
                                                                        :pincode, :mobile_number])
     end
