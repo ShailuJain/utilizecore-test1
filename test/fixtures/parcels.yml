@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  weight: MyString
-  status: MyString
-  service_id: 
-  payment_id: 
-  sender_id: 
-  receiver_id: 
+  weight: 100
+  status: Sent
+  service_type_id: 1
+  sender_id: 1
+  receiver_id: 1
+  cost: 200
 
 two:
-  weight: MyString
-  status: MyString
-  service_id: 
-  payment_id: 
-  sender_id: 
-  receiver_id: 
+  weight: 100
+  status: Sent
+  service_type_id: 1
+  sender_id: 1
+  receiver_id: 1
+  cost: 200

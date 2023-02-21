@@ -3,7 +3,8 @@ class Parcel < ApplicationRecord
 	STATUS = ['Sent', 'In Transit', 'Delivered']
 	PAYMENT_MODE = ['COD', 'Prepaid']
 
-	validates :weight, :status, presence: true
+	validates :weight, :status, :cost, presence: true
+	validates :weight, :cost, :numericality => { :greater_than => 0 }
 	validates :status, inclusion: STATUS
 	validates :payment_mode, inclusion: PAYMENT_MODE
 

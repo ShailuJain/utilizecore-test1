@@ -8,7 +8,7 @@ one:
   country: MyString
   pincode: MyString
   mobile_number: MyString
-  user_id: 
+  user_id: 1
 
 two:
   address_line_one: MyString
@@ -18,4 +18,4 @@ two:
   country: MyString
   pincode: MyString
   mobile_number: MyString
-  user_id: 
+  user_id: 1
