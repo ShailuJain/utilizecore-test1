@@ -34,8 +34,16 @@ Things you may want to cover:
 8. Cant update users (Solved)
 9. User destroy feature should be implemented as one of the below
    1. Should not be able to destroy user if any parcel exists for this user 
-   2. implement is_deactivated for user table
+   2. implement is_deactivated for user table (Implemented this solution from a better product perspective)
+      1. If any user is deactivated and the user has many parcels, then all the parcels will show (Deactivated) text in the sender/receiver column
    3. implement dependent_destroy
-10. Create tracking id feature for every parcel 
+
+#### Took 4 hours to complete all the above issues
+
+1. Create tracking id feature for every parcel 
     1. Send mail feature
-11. Search via tracking id
+2. Search via tracking id
+
+
+## Additional Issues
+1. Editing parcel should not be able to change sender and receiver

@@ -29,7 +29,7 @@ class ParcelsController < ApplicationController
 
     respond_to do |format|
       if @parcel.save
-        format.html { redirect_to @parcel, notice: 'Parcel was successfully created.' }
+        format.html { redirect_to @parcel, notice: "Parcel was successfully created with tracking id #{@parcel.tracking_id}" }
         format.json { render :show, status: :created, location: @parcel }
       else
         format.html do
