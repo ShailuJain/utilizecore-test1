@@ -2,6 +2,8 @@ require "test_helper"
 
 class ServiceTypesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as(users(:admin), "test")
+    update_default_address
     @service_type = service_types(:one)
   end
 
@@ -17,7 +19,7 @@ class ServiceTypesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create service_type" do
     assert_difference('ServiceType.count') do
-      post service_types_url, params: { service_type: { cost: @service_type.cost, name: @service_type.name } }
+      post service_types_url, params: { service_type: { name: @service_type.name } }
     end
 
     assert_redirected_to service_type_url(ServiceType.last)
@@ -34,7 +36,7 @@ class ServiceTypesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update service_type" do
-    patch service_type_url(@service_type), params: { service_type: { cost: @service_type.cost, name: @service_type.name } }
+    patch service_type_url(@service_type), params: { service_type: { name: @service_type.name } }
     assert_redirected_to service_type_url(@service_type)
   end
 

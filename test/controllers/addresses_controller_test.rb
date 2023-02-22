@@ -2,6 +2,7 @@ require "test_helper"
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as(users(:one), "test")
     @address = addresses(:one)
   end
 

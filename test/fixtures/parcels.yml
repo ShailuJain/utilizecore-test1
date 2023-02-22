@@ -6,14 +6,16 @@ one:
   payment_mode: COD
   service_type: one
   sender: one
-  receiver: one
+  receiver: two
   cost: 200
+  tracking_id: <%= SecureRandom.hex %>
 
 two:
   weight: 100
   status: Sent
   payment_mode: Prepaid
   service_type: one
-  sender: one
+  sender: two
   receiver: one
   cost: 200
+  tracking_id: <%= SecureRandom.hex %>

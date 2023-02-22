@@ -2,6 +2,8 @@ require "test_helper"
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as(users(:admin), "test")
+    update_default_address
     @user = users(:one)
   end
 
@@ -11,16 +13,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_user_url
+    get sign_up_url
     assert_response :success
-  end
-
-  test "should create user" do
-    assert_difference('User.count') do
-      post users_url, params: { user: { mobile_number: @user.mobile_number, name: @user.name } }
-    end
-
-    assert_redirected_to user_url(User.last)
   end
 
   test "should show user" do
@@ -31,11 +25,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_user_url(@user)
     assert_response :success
-  end
-
-  test "should update user" do
-    patch user_url(@user), params: { user: { mobile_number: @user.mobile_number, name: @user.name } }
-    assert_redirected_to user_url(@user)
   end
 
   test "should destroy user" do

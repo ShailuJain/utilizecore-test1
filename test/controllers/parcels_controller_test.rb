@@ -2,6 +2,8 @@ require "test_helper"
 
 class ParcelsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    sign_in_as(users(:admin), "test")
+    update_default_address
     @parcel = parcels(:one)
   end
 
@@ -36,13 +38,13 @@ class ParcelsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update parcel" do
     patch parcel_url(@parcel), params: { parcel: { receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_type_id: @parcel.service_type_id,
-                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost, payment_mode: @parcel.payment_mode } }
+                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost } }
     assert_redirected_to parcel_url(@parcel)
   end
 
   test "should have errors on update parcel if invalid params" do
     patch parcel_url(@parcel), params: { parcel: { receiver_id: @parcel.receiver_id, sender_id: @parcel.sender_id, service_type_id: @parcel.service_type_id,
-                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost, payment_mode: @parcel.payment_mode} }
+                                                   status: @parcel.status, weight: @parcel.weight, cost: @parcel.cost } }
     assert_redirected_to parcel_url(@parcel)
   end
 
