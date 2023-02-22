@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>There is a new update in your parcel status</h1>
+    <p>
+      The status is changed to <%= @parcel.reload.status %><br>
+    </p>
+    <p>
+      Visit link: <%= @url %>.
+    </p>
+    <p>Thanks and have a great day!</p>
+  </body>
+</html>
