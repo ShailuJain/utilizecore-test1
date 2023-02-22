@@ -12,14 +12,22 @@
 
   <body>
 
-    <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/search">Search Orders</a></li>
-      <li><a href="/parcels">Parcels</a></li>
-      <li><a href="/users">Manage Users</a></li>
-      <li><a href="/service_types">Service Types</a></li>
-    </ul>
-
+    <div>
+      <% unless current_page?(search_path) %>
+        <a href="/search" style="font-size: 20px;">Search Orders</a>
+      <% end %>
+    </div>
+    <% if current_user %>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/parcels">Parcels</a></li>
+        <% if current_user.is_admin %>
+          <li><a href="/users">Manage Users</a></li>
+          <li><a href="/service_types">Service Types</a></li>
+      <% end %>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+  <% end %>
     <%= yield %>
   </body>
 </html>

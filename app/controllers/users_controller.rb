@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[ show edit update destroy deactivate ]
+  before_action :authenticate_user!, except: [:new, :create, :show]
+  before_action :authorize_user!, except: [:new, :create, :show]
+  before_action :redirect_if_address_not_updated, except: [:new, :create, :show]
 
   # GET /users or /users.json
   def index
@@ -74,7 +77,7 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, address_attributes: [:id, :address_line_one, :address_line_two,
+      params.require(:user).permit(:name, :email, :password, address_attributes: [:id, :address_line_one, :address_line_two,
                                                                        :city, :state, :country,
                                                                        :pincode, :mobile_number])
     end

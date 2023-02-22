@@ -1,9 +1,14 @@
 class AddressesController < ApplicationController
   before_action :set_address, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
 
   # GET /addresses or /addresses.json
   def index
-    @addresses = Address.includes(:user)
+    @addresses = if current_user.is_admin
+       Address.all
+    else
+      Address.where(user_id: current_user.id).all
+    end
   end
 
   # GET /addresses/1 or /addresses/1.json
@@ -21,7 +26,7 @@ class AddressesController < ApplicationController
 
   # POST /addresses or /addresses.json
   def create
-    @address = Address.new(address_params)
+    @address = Address.new(address_params.merge(user_id: current_user.id))
 
     respond_to do |format|
       if @address.save
@@ -64,6 +69,6 @@ class AddressesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def address_params
-      params.require(:address).permit(:address_line_one, :address_line_two, :city, :state, :country, :pincode, :mobile_number, :user_id)
+      params.require(:address).permit(:address_line_one, :address_line_two, :city, :state, :country, :pincode, :mobile_number)
     end
 end

@@ -1,5 +1,8 @@
 class ParcelsController < ApplicationController
   before_action :set_parcel, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+  before_action :authorize_user!, only: :create
+  before_action :redirect_if_address_not_updated
 
   # GET /parcels or /parcels.json
   def index
@@ -13,13 +16,13 @@ class ParcelsController < ApplicationController
   # GET /parcels/new
   def new
     @parcel = Parcel.new
-    @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
+    @users = User.with_address.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
     @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
   end
 
   # GET /parcels/1/edit
   def edit
-    @users = User.all.map{|user| [user.name_with_address, user.id]}
+    @users = User.with_address.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
     @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
   end
 
@@ -33,7 +36,7 @@ class ParcelsController < ApplicationController
         format.json { render :show, status: :created, location: @parcel }
       else
         format.html do
-          @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
+          @users = User.with_address.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
           @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]} 
           render :new, status: :unprocessable_entity
         end
@@ -50,7 +53,7 @@ class ParcelsController < ApplicationController
         format.json { render :show, status: :ok, location: @parcel }
       else
         format.html do
-          @users = User.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
+          @users = User.with_address.where(is_deactivated: false).all.map{|user| [user.name_with_address, user.id]}
           @service_types = ServiceType.all.map{|service_type| [service_type.name, service_type.id]}
           render :edit, status: :unprocessable_entity
         end
