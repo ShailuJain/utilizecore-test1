@@ -6,22 +6,22 @@ application up and running.
 Things you may want to cover:
 
 * Ruby version
+  * 2.7.1
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
+* Database creation 
+  * bin setup
 
 * How to run the test suite
+  * rails test:all
 
 * Services (job queues, cache servers, search engines, etc.)
 
 * Deployment instructions
+  * clone git repo
+  * run `bin/setup`
+  * run `rails s`
+  * done
 
-* ...
 
 ## List Of Issues / Implemented Features:
 1. Cost accepting 0 and negative values, any chars (Solved)
@@ -49,9 +49,11 @@ Things you may want to cover:
 1. Sign Up/Login module (Done)
    1. Authorization module for admin only actions (is_admin column)
    2. Other user actions
-2. Search parcel should be publicly accessible
-3. Admin user can update status of parcel
-4. On every update of status the email should be sent to the user
+2. Search parcel should be publicly accessible (Done)
+3. Admin user can update status of parcel (Done)
+4. On every update of status the email should be sent to the user (Done)
+5. Create a new route for reports (Done)
+6. Create a report every 12:00 am and save it to a db (Done)
 
 
 ## Additional Issues
