@@ -3,7 +3,15 @@
 one:
   name: MyString
   email: test@test.com
+  password_digest: "$2a$04$WrO/WBV5rOmznhwZtd2LTu7T5om2w3v6ikFEHQV1wAONmLPtt/aum"
 
 two:
   name: MyString
   email: test1@test.com
+  password_digest: "$2a$04$WrO/WBV5rOmznhwZtd2LTu7T5om2w3v6ikFEHQV1wAONmLPtt/aum"
+
+admin:
+  name: MyString
+  email: admin@test.com
+  is_admin: true
+  password_digest: "$2a$04$WrO/WBV5rOmznhwZtd2LTu7T5om2w3v6ikFEHQV1wAONmLPtt/aum"

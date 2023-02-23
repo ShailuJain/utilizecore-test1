@@ -1,0 +1,3 @@
+Tracking Id,Sender Name,Sender Mobile Number,Sender Email,Receiver Name,Receiver Mobile Number,Receiver Email,Weight of Parcel,Cost Of Parcel,Status,Service Type,Payment Mode
+6cec2fa7be71cf7bcccf7081d3ab6d2d,sender,9999999999,sender@gmail.com,receiver,9999999999,receiver@gmail.com,100.0,2000.0,Sent,Speed Post,COD
+798119c2c16daa6bdae1698e36b31792,receiver,9999999999,receiver@gmail.com,sender,9999999999,sender@gmail.com,10.0,10023.0,In Transit,Regular,Prepaid

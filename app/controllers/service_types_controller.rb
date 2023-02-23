@@ -1,5 +1,8 @@
 class ServiceTypesController < ApplicationController
   before_action :set_service_type, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:edit, :destroy, :update]
+  before_action :authorize_user!, only: [:edit, :destroy, :update]
+  before_action :redirect_if_address_not_updated
 
   # GET /service_types or /service_types.json
   def index

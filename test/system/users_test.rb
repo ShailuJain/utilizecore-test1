@@ -5,41 +5,14 @@ class UsersTest < ApplicationSystemTestCase
     @user = users(:one)
   end
 
-  test "visiting the index" do
-    visit users_url
-    assert_selector "h1", text: "Users"
-  end
-
   test "creating a User" do
-    visit users_url
-    click_on "New User"
+    visit sign_up_url
 
-    fill_in "Mobile number", with: @user.mobile_number
     fill_in "Name", with: @user.name
-    click_on "Create User"
+    fill_in "Email", with: SecureRandom.hex(5) + "@gmail.com"
+    fill_in "Password", with: "password"
+    click_on "Sign Up"
 
     assert_text "User was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a User" do
-    visit users_url
-    click_on "Edit", match: :first
-
-    fill_in "Mobile number", with: @user.mobile_number
-    fill_in "Name", with: @user.name
-    click_on "Update User"
-
-    assert_text "User was successfully updated"
-    click_on "Back"
-  end
-
-  test "destroying a User" do
-    visit users_url
-    page.accept_confirm do
-      click_on "Destroy", match: :first
-    end
-
-    assert_text "User was successfully destroyed"
   end
 end

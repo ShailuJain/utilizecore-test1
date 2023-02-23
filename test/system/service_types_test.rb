@@ -2,6 +2,8 @@ require "application_system_test_case"
 
 class ServiceTypesTest < ApplicationSystemTestCase
   setup do
+    sign_in_as(users(:admin), "test", ui: true)
+    update_default_address(ui: true)
     @service_type = service_types(:one)
   end
 
@@ -14,7 +16,6 @@ class ServiceTypesTest < ApplicationSystemTestCase
     visit service_types_url
     click_on "New Service Type"
 
-    fill_in "Cost", with: @service_type.cost
     fill_in "Name", with: @service_type.name
     click_on "Create Service type"
 
@@ -26,7 +27,6 @@ class ServiceTypesTest < ApplicationSystemTestCase
     visit service_types_url
     click_on "Edit", match: :first
 
-    fill_in "Cost", with: @service_type.cost
     fill_in "Name", with: @service_type.name
     click_on "Update Service type"
 

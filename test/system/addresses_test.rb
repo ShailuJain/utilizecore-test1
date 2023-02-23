@@ -2,6 +2,7 @@ require "application_system_test_case"
 
 class AddressesTest < ApplicationSystemTestCase
   setup do
+    sign_in_as(users(:one), "test", ui: true)
     @address = addresses(:one)
   end
 
@@ -21,7 +22,6 @@ class AddressesTest < ApplicationSystemTestCase
     fill_in "Mobile number", with: @address.mobile_number
     fill_in "Pincode", with: @address.pincode
     fill_in "State", with: @address.state
-    fill_in "User", with: @address.user_id
     click_on "Create Address"
 
     assert_text "Address was successfully created"
@@ -39,7 +39,6 @@ class AddressesTest < ApplicationSystemTestCase
     fill_in "Mobile number", with: @address.mobile_number
     fill_in "Pincode", with: @address.pincode
     fill_in "State", with: @address.state
-    fill_in "User", with: @address.user_id
     click_on "Update Address"
 
     assert_text "Address was successfully updated"
