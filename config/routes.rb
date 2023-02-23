@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
   root to: 'parcels#index'
   get '/search', to: 'search#index'
+  get '/reports', to: 'reports#index'
+  get '/reports/:id', to: 'reports#download', as: 'download_report'
 
   post 'sign_up', to: 'users#create'
   get 'sign_up', to: 'users#new'

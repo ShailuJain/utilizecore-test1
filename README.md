@@ -50,6 +50,8 @@ Things you may want to cover:
    1. Authorization module for admin only actions (is_admin column)
    2. Other user actions
 2. Search parcel should be publicly accessible
+3. Admin user can update status of parcel
+4. On every update of status the email should be sent to the user
 
 
 ## Additional Issues
