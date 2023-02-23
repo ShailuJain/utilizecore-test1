@@ -20,6 +20,7 @@ Things you may want to cover:
   * clone git repo
   * run `bin/setup`
   * run `rails s`
+  * whenever --update-crontab
   * done
 
 
